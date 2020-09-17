@@ -11,20 +11,20 @@ namespace EjercicioClase08
         private List<CuentaOffShore> _listadoCuentas;
         private eParaisosFiscales _lugar;
         public static int cantidadDeCuentas;
-        public DateTime fechaInicioActividades;
+        public static DateTime fechaInicioActividades;
 
         /// Constructor estático y privado????
-        private ParaisoFiscal()
+        static ParaisoFiscal()
         {
             cantidadDeCuentas = 0;
-            this.fechaInicioActividades = DateTime.Now;
-            this._listadoCuentas = new List<CuentaOffShore>();
+            fechaInicioActividades = DateTime.Now;           
+
         }
 
-        //private ParaisoFiscal():this()
-        //{
-
-        //}
+        private ParaisoFiscal()
+        {
+            this._listadoCuentas = new List<CuentaOffShore>();
+        }
 
         private ParaisoFiscal(eParaisosFiscales lugar) : this()
         {
@@ -35,7 +35,7 @@ namespace EjercicioClase08
         public void MostrarParaiso()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendFormat("\nFecha inicio de actividades: {0}\n", this.fechaInicioActividades);
+            sb.AppendFormat("\nFecha inicio de actividades: {0}\n", ParaisoFiscal.fechaInicioActividades);
             sb.AppendFormat("Lugar de radicacion: {0}\n", this._lugar);
             sb.AppendFormat("Cantidad cuentas offshore: {0}\n\n", cantidadDeCuentas);
             sb.AppendFormat("**********Listado de cuentas********** \n");
