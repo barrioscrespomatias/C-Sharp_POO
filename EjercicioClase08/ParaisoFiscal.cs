@@ -13,19 +13,26 @@ namespace EjercicioClase08
         public static int cantidadDeCuentas;
         public static DateTime fechaInicioActividades;
 
-        /// Constructor estático y privado????
+       /// <summary>
+       /// Constructor estático y privado
+       /// </summary>
         static ParaisoFiscal()
         {
             cantidadDeCuentas = 0;
             fechaInicioActividades = DateTime.Now;           
 
         }
-
+        /// <summary>
+        /// Constructor por defecto
+        /// </summary>
         private ParaisoFiscal()
         {
             this._listadoCuentas = new List<CuentaOffShore>();
         }
-
+        /// <summary>
+        /// Constructor con un parametro lugar.
+        /// </summary>
+        /// <param name="lugar"></param>
         private ParaisoFiscal(eParaisosFiscales lugar) : this()
         {
             this._lugar = lugar;
