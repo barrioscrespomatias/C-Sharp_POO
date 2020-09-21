@@ -70,7 +70,7 @@ namespace EjercicioClase07
             bool retorno = false;
             foreach (Tempera aux in p.temperas)
             {
-                if (aux == t1 && t1 !=null)
+                if (aux == t1)
                 {
                     retorno = true;
                     break;
@@ -165,11 +165,11 @@ namespace EjercicioClase07
 
         public static Paleta operator +(Paleta p1, Paleta p2)
         {
-            Paleta nuevaPaleta = new Paleta(p1.cantidadMaximaColores);
+            Paleta nuevaPaleta = new Paleta(p2.cantidadMaximaColores);
             int i;
             int x;
             bool sumador;
-            int cantidadSumada = 0;
+            int cantidadSumada;
             int indice = 0;
             ////Cargo en la paleta resultante todo lo contenido en la primer paleta
             //for (i = 0; i < p1.cantidadMaximaColores; i++)
@@ -210,22 +210,20 @@ namespace EjercicioClase07
                 if (temperaP1 != null)
                     nuevaPaleta += temperaP1;
             }
-
-
             //Recorro la primer paleta y compara cada tempera con las temperas que tenga la nuevaPaleta.
-
-
             foreach (Tempera temperaP2 in p2.temperas)
             {
                 if (temperaP2 != null)
                 {
+
                     //Si son iguales en color y marca, las sumo.
                     if (nuevaPaleta == temperaP2)
                     {
-                        cantidadSumada = temperaP2;
-                        //Acá hay un error.....
+                        //Obtiene la cantidad de tempera que hay en la tempera actual de la paleta.
+                        cantidadSumada = temperaP2;                     
+                        //Sumo la cantidad de tempera.
                         nuevaPaleta.temperas[indice] += cantidadSumada;
-
+                        //Después de sumar aparece el error.                       
 
                     }
                     //Si son distintas, la agrego a la paleta.
@@ -233,20 +231,12 @@ namespace EjercicioClase07
                     {
                         nuevaPaleta += temperaP2;
                     }
-                   
+
                 }
                 indice++;
 
-
             }
-
             return nuevaPaleta;
-
         }
-
-
-
-
-
     }
 }

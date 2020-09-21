@@ -46,6 +46,7 @@
             this.btnConvertDolar = new System.Windows.Forms.Button();
             this.btnConvertPeso = new System.Windows.Forms.Button();
             this.btnLockCotizacion = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.txtCotizacionPeso = new System.Windows.Forms.TextBox();
             this.txtCotizacionDolar = new System.Windows.Forms.TextBox();
             this.txtCotizacionEuro = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.lblEuroA = new System.Windows.Forms.Label();
             this.lblDolarA = new System.Windows.Forms.Label();
             this.lblPesoA = new System.Windows.Forms.Label();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.SuspendLayout();
             // 
             // txtEuro
@@ -203,6 +203,13 @@
             this.btnLockCotizacion.Size = new System.Drawing.Size(87, 23);
             this.btnLockCotizacion.TabIndex = 15;
             this.btnLockCotizacion.UseVisualStyleBackColor = true;
+            this.btnLockCotizacion.Click += new System.EventHandler(this.btnLockCotizacion_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "candado.jpg");
             // 
             // txtCotizacionPeso
             // 
@@ -297,12 +304,6 @@
             this.lblPesoA.Size = new System.Drawing.Size(40, 16);
             this.lblPesoA.TabIndex = 25;
             this.lblPesoA.Text = "Peso";
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "candado.jpg");
             // 
             // Conversor
             // 
