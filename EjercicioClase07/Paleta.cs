@@ -11,7 +11,7 @@ namespace EjercicioClase07
         private Tempera[] temperas;
         private int cantidadMaximaColores;
 
-        private Paleta():this(5)
+        private Paleta() : this(5)
         {
 
         }
@@ -22,7 +22,7 @@ namespace EjercicioClase07
             this.temperas = new Tempera[this.cantidadMaximaColores];
         }
 
-        public static implicit operator Paleta (int cantidad)
+        public static implicit operator Paleta(int cantidad)
         {
             Paleta p = new Paleta(cantidad);
             return p;
@@ -34,8 +34,8 @@ namespace EjercicioClase07
         /// </summary>
         /// <param name="p"></param>
         /// PODRIA USAR EL == ?????
-        
-        
+
+
         //public static implicit operator int(Paleta p)
         //{
         //    int cantidadActualTemperas=0;
@@ -54,23 +54,23 @@ namespace EjercicioClase07
             sb.AppendFormat("Listado de temperas: \n\n");
             foreach (Tempera t1 in this.temperas)
             {
-                if(t1!=null)
-                sb.AppendFormat(Tempera.Mostrar(t1));
+                if (t1 != null)
+                    sb.AppendFormat(Tempera.Mostrar(t1));
             }
             return sb.ToString();
         }
 
         public static explicit operator string(Paleta p)
         {
-           return p.Mostrar();
+            return p.Mostrar();
         }
 
-        public static bool operator == (Paleta p, Tempera t1)
+        public static bool operator ==(Paleta p, Tempera t1)
         {
             bool retorno = false;
-            foreach(Tempera aux in p.temperas)
+            foreach (Tempera aux in p.temperas)
             {
-                if(aux == t1)
+                if (aux == t1 && t1 !=null)
                 {
                     retorno = true;
                     break;
@@ -88,19 +88,19 @@ namespace EjercicioClase07
         {
             int indiceRetornado = -1;
             int contador = 0;
-            foreach(Tempera t1 in this.temperas)
-            {                
+            foreach (Tempera t1 in this.temperas)
+            {
                 if (t1 == null)
                 {
                     indiceRetornado = contador;
                     break;
                 }
-                    
+
 
                 else
                     contador++;
             }
-            
+
             return indiceRetornado;
         }
 
@@ -109,10 +109,14 @@ namespace EjercicioClase07
             int indice = -1;
             int contador = 0;
 
-            foreach(Tempera aux in this.temperas)
+            foreach (Tempera aux in this.temperas)
             {
                 if (aux == t1)
+                {
                     indice = contador;
+                    break;
+                }
+
 
                 else
                     contador++;
@@ -121,17 +125,17 @@ namespace EjercicioClase07
         }
 
         public static Paleta operator +(Paleta p, Tempera t1)
-        {          
+        {
             int indice = p.ObtenerIndice(t1);
             int t1Cantidad = t1;
             int indiceVacio;
             bool sumaEfectuada;
-         
-            if(indice == -1)
+
+            if (indice == -1)
             {
-               indiceVacio=p.ObtenerIndice();
-                if(t1Cantidad>0)
-                p.temperas[indiceVacio] = t1;
+                indiceVacio = p.ObtenerIndice();
+                if (t1Cantidad > 0)
+                    p.temperas[indiceVacio] = t1;
             }
             else
             {
@@ -140,7 +144,7 @@ namespace EjercicioClase07
                 //p.temperas[indice]+= t1Cantidad;
                 sumaEfectuada = p.temperas[indice] + t1;
             }
-            return p;               
+            return p;
         }
 
         public static Paleta operator -(Paleta p, Tempera t1)
@@ -151,8 +155,8 @@ namespace EjercicioClase07
             int cantidadEnPosicion;
             if (indice != -1)
             {
-               restaEfectuada =p.temperas[indice] - t1;
-               cantidadEnPosicion = p.temperas[indice];
+                restaEfectuada = p.temperas[indice] - t1;
+                cantidadEnPosicion = p.temperas[indice];
                 if (cantidadEnPosicion <= 0)
                     p.temperas[indice] = null;
             }
@@ -161,21 +165,83 @@ namespace EjercicioClase07
 
         public static Paleta operator +(Paleta p1, Paleta p2)
         {
+            Paleta nuevaPaleta = new Paleta(p1.cantidadMaximaColores);
+            int i;
+            int x;
+            bool sumador;
+            int cantidadSumada = 0;
             int indice = 0;
-            int cantidadT1;
-            
-            foreach(Tempera t1 in p1.temperas)
+            ////Cargo en la paleta resultante todo lo contenido en la primer paleta
+            //for (i = 0; i < p1.cantidadMaximaColores; i++)
+            //{
+            //    if (p1.temperas[i] != null)
+            //        nuevaPaleta += p1.temperas[i];
+            //}
+
+            ////Comparo la segunda paleta con la paleta resultante y si las temperas son iguales, las sumo.            
+            //for (i = 0; i < p2.cantidadMaximaColores; i++)
+            //{
+            //    if (p2.temperas[i] != null)
+            //    {
+            //        for (x = 0; x < nuevaPaleta.cantidadMaximaColores; x++)
+            //        {
+            //            if (nuevaPaleta.temperas[x] != null)
+            //            {
+            //                //Obtengo la cantidad de tempera a sumar.
+            //                cantidadSumada = p2.temperas[i];
+            //                if (p2.temperas[i] == nuevaPaleta.temperas[x])
+            //                {
+            //                    nuevaPaleta.temperas[x] += cantidadSumada;
+            //                }
+            //                //Sino son iguales, la agrego
+            //                else
+            //                {
+            //                    nuevaPaleta += p2.temperas[i];
+            //                }
+            //            }
+            //        }
+            //    }
+            //}
+
+
+            //Recorro la segunda paleta y cargo todas sus temperas dentro de la nuevaPaleta.
+            foreach (Tempera temperaP1 in p1.temperas)
             {
-                indice= p2.ObtenerIndice(t1);                
-                if (indice != -1 && t1!=null)
-                {
-                    cantidadT1 = t1;
-                    p2.temperas[indice] += cantidadT1;
-                }                   
-                                
+                if (temperaP1 != null)
+                    nuevaPaleta += temperaP1;
             }
-            return p2;
-           
+
+
+            //Recorro la primer paleta y compara cada tempera con las temperas que tenga la nuevaPaleta.
+
+
+            foreach (Tempera temperaP2 in p2.temperas)
+            {
+                if (temperaP2 != null)
+                {
+                    //Si son iguales en color y marca, las sumo.
+                    if (nuevaPaleta == temperaP2)
+                    {
+                        cantidadSumada = temperaP2;
+                        //Acá hay un error.....
+                        nuevaPaleta.temperas[indice] += cantidadSumada;
+
+
+                    }
+                    //Si son distintas, la agrego a la paleta.
+                    else
+                    {
+                        nuevaPaleta += temperaP2;
+                    }
+                   
+                }
+                indice++;
+
+
+            }
+
+            return nuevaPaleta;
+
         }
 
 

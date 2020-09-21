@@ -64,18 +64,31 @@ namespace EjercicioClase07
             return !(t1 == t2);
         }
 
-        //Devuelve la cantidad de tempera???
+        //Devuelve la cantidad de tempera
         public static implicit operator int (Tempera t1)
-        {          
-            return t1.cantidad;
+        {
+            int cantidad = 0;
+            if (t1 != null)
+                cantidad = t1.cantidad;
+
+            return cantidad;
         }
 
         //MAXIMO DE CANTIDAD?
         public static bool operator +(Tempera t1, Tempera t2)
         {
-            bool retorno = t1 == t2;
-            if (retorno)
-                t1.cantidad +=t2.cantidad;            
+            bool retorno = false;             
+            
+
+
+            if (t1 != null && t2!= null)
+            {
+                retorno=t1 == t2;
+                if (retorno)
+                    t1.cantidad += t2.cantidad;
+            }
+             
+                   
 
             return retorno;
         }
@@ -92,7 +105,11 @@ namespace EjercicioClase07
 
         public static Tempera operator +(Tempera t1, int cantidadTempera)
         {
-            t1.cantidad+= cantidadTempera;
+            if (t1 != null)
+            {
+                t1.cantidad += cantidadTempera;
+            }
+            
             return t1;
         }
         #endregion
