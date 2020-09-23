@@ -46,7 +46,7 @@ namespace EjercicioClase07
             if (((object)t1) == null && ((object)t2) == null)
                 retorno = true;
 
-            else if(((object)t1) != null && ((object)t2) != null)
+            else if (((object)t1) != null && ((object)t2) != null)
             {
                 if (t1.marca == t2.marca && t1.color == t2.color)
                     retorno = true;
@@ -65,7 +65,7 @@ namespace EjercicioClase07
         }
 
         //Devuelve la cantidad de tempera
-        public static implicit operator int (Tempera t1)
+        public static implicit operator int(Tempera t1)
         {
             int cantidad = 0;
             if (t1 != null)
@@ -77,23 +77,27 @@ namespace EjercicioClase07
         //MAXIMO DE CANTIDAD?
         public static bool operator +(Tempera t1, Tempera t2)
         {
-            bool retorno = false;             
+            bool retorno = false;
             
 
+            //Crear instancia nueva de tempera.
 
-            if (t1 != null && t2!= null)
+            if (t1 != null && t2 != null)
             {
-                retorno=t1 == t2;
+                retorno = t1 == t2;
                 if (retorno)
-                    t1.cantidad += t2.cantidad;
+                {
+                    Tempera aux = new Tempera(t1.color, t1.marca, t1.cantidad += t2.cantidad);
+                    
+                }
+                    
             }
-             
-                   
+
 
             return retorno;
         }
 
-        //CANTIDADES MENOR QUE CERO??
+
         public static bool operator -(Tempera t1, Tempera t2)
         {
             bool retorno = t1 == t2;
@@ -109,7 +113,7 @@ namespace EjercicioClase07
             {
                 t1.cantidad += cantidadTempera;
             }
-            
+
             return t1;
         }
         #endregion

@@ -117,7 +117,6 @@ namespace EjercicioClase07
                     break;
                 }
 
-
                 else
                     contador++;
             }
@@ -127,23 +126,21 @@ namespace EjercicioClase07
         public static Paleta operator +(Paleta p, Tempera t1)
         {
             int indice = p.ObtenerIndice(t1);
-            int t1Cantidad = t1;
             int indiceVacio;
             bool sumaEfectuada;
 
             if (indice == -1)
             {
                 indiceVacio = p.ObtenerIndice();
-                if (t1Cantidad > 0)
+                //Mediante casteo implicito de cantidad de tempera.
+                if (t1 > 0)
                     p.temperas[indiceVacio] = t1;
             }
             else
             {
-                // En la suma no pude usar t1 directamente. ?????
-                //p.temperas[indice] += t1;
-                //p.temperas[indice]+= t1Cantidad;
                 sumaEfectuada = p.temperas[indice] + t1;
             }
+
             return p;
         }
 
@@ -204,38 +201,22 @@ namespace EjercicioClase07
             //}
 
 
-            //Recorro la segunda paleta y cargo todas sus temperas dentro de la nuevaPaleta.
+            //Recorro la primer paleta y cargo todas sus temperas dentro de la nuevaPaleta.
             foreach (Tempera temperaP1 in p1.temperas)
             {
                 if (temperaP1 != null)
                     nuevaPaleta += temperaP1;
             }
-            //Recorro la primer paleta y compara cada tempera con las temperas que tenga la nuevaPaleta.
+            //Recorro la segunda y compara cada tempera con las temperas que tenga la nuevaPaleta.
+            //Si está, suma cantidades, sino la agrega.
             foreach (Tempera temperaP2 in p2.temperas)
             {
                 if (temperaP2 != null)
-                {
+                    nuevaPaleta += temperaP2;
 
-                    //Si son iguales en color y marca, las sumo.
-                    if (nuevaPaleta == temperaP2)
-                    {
-                        //Obtiene la cantidad de tempera que hay en la tempera actual de la paleta.
-                        cantidadSumada = temperaP2;                     
-                        //Sumo la cantidad de tempera.
-                        nuevaPaleta.temperas[indice] += cantidadSumada;
-                        //Después de sumar aparece el error.                       
-
-                    }
-                    //Si son distintas, la agrego a la paleta.
-                    else
-                    {
-                        nuevaPaleta += temperaP2;
-                    }
-
-                }
-                indice++;
 
             }
+
             return nuevaPaleta;
         }
     }
