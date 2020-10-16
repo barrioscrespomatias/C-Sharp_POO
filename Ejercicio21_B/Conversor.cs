@@ -26,26 +26,32 @@ namespace Ejercicio21_B
         {
             int flag=0;
             this.btnLockCotizacion.DialogResult = DialogResult.OK;
+            
 
-            if(btnLockCotizacion.DialogResult == DialogResult.OK && flag==0)
-            {
-                this.txtCotizacionEuro.Enabled = false;
-                this.txtCotizacionDolar.Enabled = false;
-                this.txtCotizacionPeso.Enabled = false;
-                this.btnLockCotizacion.DialogResult = DialogResult.Cancel;
-                flag = 1;
-            }
+
+
+        }
+
+        private void Conversor_FormClosing(object sender, FormClosingEventArgs e)
+        {           
+
+            DialogResult rta = MessageBox.Show("Esta seguro de querer salir?", "Atencion!",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+
+            if (rta == DialogResult.Yes)
+                e.Cancel = false;
+
             else
             {
-                this.txtCotizacionEuro.Enabled = false;
-                this.txtCotizacionDolar.Enabled = false;
-                this.txtCotizacionPeso.Enabled = false;
-                this.btnLockCotizacion.DialogResult = DialogResult.OK;
+                e.Cancel = true;
+                MessageBox.Show("Continua en la aplicacion");
 
             }
+        }
 
-
-
+        private void Conversor_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            MessageBox.Show("Gracias por haber utilizado la aplicacion");
         }
     }
 }

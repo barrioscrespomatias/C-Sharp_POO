@@ -15,21 +15,21 @@ namespace Ejercicio14
             return calculo;
         }
 
-        public static double CalcularTriangulo(double d1, double d2)
-        {
-            double calculo;
+        //public static double CalcularTriangulo(double d1, double d2)
+        //{
+        //    double calculo;
 
 
 
-            return calculo;
-        }
+        //    return calculo;
+        //}
 
-        public static double CalcularCirculo(double d1)
-        {
-            double calculo;
+        //public static double CalcularCirculo(double d1)
+        //{
+        //    double calculo;
 
-            return calculo;
+        //    return calculo;
 
-        }
+        //}
     }
 }

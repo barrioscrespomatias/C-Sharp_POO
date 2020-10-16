@@ -339,6 +339,8 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Conversor";
             this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Conversor_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Conversor_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
